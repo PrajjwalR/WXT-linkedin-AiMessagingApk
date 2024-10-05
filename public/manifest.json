@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "LinkedIn Input Alert Extension",
+  "version": "1.0",
+  "description": "Shows an alert when the input button is clicked.",
+  "permissions": ["activeTab"],
+  "background": {
+    "service_worker": "background.ts"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.ts"]
+    }
+  ]
+}
