@@ -1,18 +1,21 @@
 {
-  "manifest_version": 3,
-  "name": "LinkedIn Input Alert Extension",
-  "version": "1.0",
-  "description": "Shows an alert when the input button is clicked.",
-  "permissions": ["activeTab", "scripting"],
-  "background": {
-    "service_worker": "background.js"
-  },
-  "action": {
-    "default_popup": "popup.html"
-  },
-  "content_scripts": [
-    {
-      "matches": ["https://www.linkedin.com/*"],
-      "js": ["content.js", "popup.js"]    }
-  ]
+    "manifest_version": 3,
+    "name": "LinkedIn AI Extension",
+    "version": "1.0",
+    "description": "A Chrome extension for LinkedIn AI replies.",
+    "action": {
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.linkedin.com/*"],
+            "js": ["content.js"]
+        }
+    ]
 }

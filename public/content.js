@@ -1,4 +1,3 @@
-// Function to add an icon to the message input field and alert functionality
 const addIconToMessageInput = () => {
   const messageInput = document.querySelector('.msg-form__contenteditable');
 
@@ -36,7 +35,7 @@ const addIconToMessageInput = () => {
 
     // Style the img element
     svgIcon.style.position = 'absolute';
-    svgIcon.style.right = '10px';  // Adjust to position inside input field
+    // svgIcon.style.right = '50px';  // Adjust to position inside input field
     svgIcon.style.top = '50%';
     // svgIcon.style.transform = 'translateY(-50%)';
     svgIcon.style.width = '20px';   // Adjust icon size as needed
@@ -53,6 +52,7 @@ const addIconToMessageInput = () => {
       event.stopPropagation(); // Prevent click event from bubbling to the input field
       // console.log("Prajjwal")
       alert('Icon clicked!');
+
       
     });
   }
