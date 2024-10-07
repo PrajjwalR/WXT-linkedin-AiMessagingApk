@@ -1,17 +1,11 @@
-// const messageInput = document.querySelector('.msg-form__contenteditable');
-// messageInput.addEventListener('click', () => {
-//   addIconToMessageInput()
-// })
-
-
 const addIconToMessageInput = () => {
   const messageInput = document.querySelector('.msg-form__contenteditable');
-
   if (messageInput) {
     // Create an SVG element for the icon
 
     // const imgIcon = document.createElement('img');
     const svgIcon = document.createElement('div')
+    svgIcon.className = "svg-icon"
     svgIcon.innerHTML = `<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g filter="url(#filter0_dd_3_37)">
   <rect x="5" y="1" width="32" height="32" rx="16" fill="white"/>
@@ -62,9 +56,22 @@ const addIconToMessageInput = () => {
       
     });
   }
+  window.addEventListener('click', function (event) {
+  // Check if the click is outside of the messageInput
+  if (!messageInput.contains(event.target)) {
+    // alert("BYYY");
+    
+    // Find the SVG icon that was added
+    const svgIcon = messageInput.querySelector('.svg-icon');
+    // Remove the icon if it exists
+    if (svgIcon) {
+      // alert("SBH")
+      messageInput.removeChild(svgIcon); // Remove the icon from the message input
+    }
+  }
+});
+
 };
-
-
 
 // Use MutationObserver to detect when the LinkedIn DOM changes (e.g., message input field is loaded)
 const observer = new MutationObserver((mutationsList, observer) => {
@@ -74,7 +81,6 @@ const observer = new MutationObserver((mutationsList, observer) => {
     addIconToMessageInput();
     observer.disconnect(); // Stop observing once the input is found and the icon is injected
     }
-    
   });
 
 
@@ -187,4 +193,6 @@ function PopupModal() {
     dummyTextContainer.innerHTML = dummyText;
   });
 }
+
+
 
