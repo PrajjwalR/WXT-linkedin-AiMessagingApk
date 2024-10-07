@@ -1,3 +1,9 @@
+// const messageInput = document.querySelector('.msg-form__contenteditable');
+// messageInput.addEventListener('click', () => {
+//   addIconToMessageInput()
+// })
+
+
 const addIconToMessageInput = () => {
   const messageInput = document.querySelector('.msg-form__contenteditable');
 
@@ -63,12 +69,19 @@ const addIconToMessageInput = () => {
 // Use MutationObserver to detect when the LinkedIn DOM changes (e.g., message input field is loaded)
 const observer = new MutationObserver((mutationsList, observer) => {
   const messageInput = document.querySelector('.msg-form__contenteditable');
-  if (messageInput) {
+  messageInput.addEventListener('click', () => {
+    if (messageInput) {
     addIconToMessageInput();
     observer.disconnect(); // Stop observing once the input is found and the icon is injected
-  }
-});
+    }
+    
+  });
 
+
+ 
+  
+  })
+  
 // Start observing the document for changes
 observer.observe(document.body, {
   childList: true,
@@ -76,44 +89,35 @@ observer.observe(document.body, {
 });
 
 function PopupModal() {
-  // Select the message input container where the modal will be appended
-  const messageInput = document.querySelector('.msg-form__contenteditable');
-
   // Create modal elements
   const modal = document.createElement('div');
   const modalContent = document.createElement('div');
   const modalInput = document.createElement('input');
   const generateButton = document.createElement('button');
   const closeButton = document.createElement('span');
+  const dummyTextContainer = document.createElement('div');  // New element for dummy text
 
-  // Set attributes and content for the modal input and buttons
-  modalInput.placeholder = 'Write the prompt here';
-  generateButton.innerHTML = 'Generate';
-  closeButton.innerHTML = '&times;'; // Unicode for "X" close icon
-
-  // Style the modal and its content
+  // Set attributes and styles for modal
   modal.style.position = 'fixed';
-  modal.style.left = '50%';
   modal.style.top = '50%';
+  modal.style.left = '50%';
   modal.style.transform = 'translate(-50%, -50%)';
-  modal.style.backgroundColor = '#fff';
+  modal.style.background = 'white';
   modal.style.padding = '20px';
+  modal.style.border = '1px solid #ccc';
+  modal.style.zIndex = '1000'; // Make sure it's on top
   modal.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-  modal.style.zIndex = '1000';
-  modal.style.borderRadius = '8px';
-  modal.style.width = '350px';
-  modal.style.boxSizing = 'border-box';
 
-  modalContent.style.display = 'flex';
-  modalContent.style.flexDirection = 'column';
-  modalContent.style.alignItems = 'center';
-  modalContent.style.gap = '10px';
+  modalContent.style.position = 'relative';
+  modalContent.style.width = '300px';
+  modalContent.style.height = '150px';
+  modalContent.style.padding = '10px';
 
+  modalInput.setAttribute('placeholder', 'Your Prompt');
   modalInput.style.width = '100%';
-  modalInput.style.padding = '10px';
-  modalInput.style.borderRadius = '4px';
-  modalInput.style.border = '1px solid #ccc';
+  modalInput.style.marginBottom = '10px';
 
+  generateButton.innerText = 'Generate';
   generateButton.style.padding = '10px 20px';
   generateButton.style.backgroundColor = '#007BFF';
   generateButton.style.color = '#fff';
@@ -121,35 +125,66 @@ function PopupModal() {
   generateButton.style.borderRadius = '4px';
   generateButton.style.cursor = 'pointer';
 
-  // Style the close button (X icon)
+  closeButton.innerText = 'X';
   closeButton.style.position = 'absolute';
-  closeButton.style.top = '15px';
+  closeButton.style.top = '10px';
   closeButton.style.right = '15px';
-  closeButton.style.fontSize = '24px';
   closeButton.style.cursor = 'pointer';
 
-  // Append input, button, and close button to the modal content container
+  // Add styling for dummy text container
+  dummyTextContainer.style.marginBottom = '10px';
+  dummyTextContainer.style.color = '#333';  // Styling for the dummy text
+  dummyTextContainer.style.fontSize = '14px';
+
+  // Append elements to modal
   modalContent.appendChild(modalInput);
+  modalContent.appendChild(dummyTextContainer); // Adding the dummy text container
   modalContent.appendChild(generateButton);
-
-  // Append the modal content and close button to the modal container
+  modalContent.appendChild(closeButton);
   modal.appendChild(modalContent);
-  modal.appendChild(closeButton);
-
-  // Append the modal to the document body
   document.body.appendChild(modal);
 
-  // Close modal when the close button (X) is clicked
-  closeButton.addEventListener('click', function () {
-    modal.remove(); // Remove the modal from the DOM
+  // Close modal when clicking the close button
+  closeButton.addEventListener('click', () => {
+    document.body.removeChild(modal);
   });
 
   // Close modal when clicking outside of the modal content
   window.addEventListener('click', function (event) {
-    if (event.target === modal) {
-      modal.remove(); // Remove modal if clicking outside of the modal content
+    if (!modalContent.contains(event.target)) {
+      document.body.removeChild(modal); // Remove modal if clicking outside of the modal content
     }
   });
-}
 
+  // Add functionality to generate dummy text when the button is clicked
+  generateButton.addEventListener('click', () => {
+    const dummyText = "Thank you for the opportunity! If you have any more questions or if there's anything else I can help you with, feel free to ask."; // You can customize this
+    generateButton.innerText = 'Regenerate';
+    
+    // Generating insert button
+    const insertButton = document.createElement('button')
+
+    insertButton.innerHTML = 'Insert'
+    insertButton.style.padding = '10px 20px';
+    insertButton.style.backgroundColor = 'green';
+    insertButton.style.color = '#fff';
+    insertButton.style.border = '1px solid black';
+    insertButton.style.borderRadius = '4px';
+    insertButton.style.cursor = 'pointer';
+
+    modalContent.appendChild(insertButton);
+
+    insertButton.addEventListener('click', () => {
+        const messageInput = document.querySelector('.msg-form__contenteditable');
+       const messagePlaceholder = document.querySelector('.msg-form__placeholder');
+
+      messageInput.innerHTML = dummyText
+      messagePlaceholder.style.display = 'none'
+      document.body.removeChild(modal);
+  }); 
+      
+      
+    dummyTextContainer.innerHTML = dummyText;
+  });
+}
 
