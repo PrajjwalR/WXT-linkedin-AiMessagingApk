@@ -78,13 +78,13 @@ const addIconToMessageInput = () => {
 
 
 
-// Use MutationObserver to detect when the LinkedIn DOM changes (e.g., message input field is loaded)
+// Using MutationObserver to detect when the LinkedIn DOM changes 
 const observer = new MutationObserver((mutationsList, observer) => {
   const messageInput = document.querySelector('.msg-form__contenteditable');
   messageInput.addEventListener('click', () => {
     if (messageInput) {
     addIconToMessageInput();
-    observer.disconnect(); // Stop observing once the input is found and the icon is injected
+    observer.disconnect(); // It will stop observing once the input is found and the icon is injected
     }
   });
 
@@ -100,7 +100,6 @@ observer.observe(document.body, {
 });
 
 function PopupModal() {
-  // Create modal elements
   const modal = document.createElement('div');
   const modalContent = document.createElement('div');
   const modalInput = document.createElement('input');
@@ -108,7 +107,7 @@ function PopupModal() {
   const closeButton = document.createElement('span');
   const dummyTextContainer = document.createElement('div');  // New element for dummy text
 
-  // Set attributes and styles for modal
+  // Setting attributes and styles for modal
   modal.style.position = 'fixed';
   modal.style.top = '50%';
   modal.style.left = '50%';
@@ -116,7 +115,7 @@ function PopupModal() {
   modal.style.background = 'white';
   modal.style.padding = '20px';
   modal.style.border = '1px solid #ccc';
-  modal.style.zIndex = '1000'; // Make sure it's on top
+  modal.style.zIndex = '1000';
   modal.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
 
   modalContent.style.position = 'relative';
@@ -142,34 +141,34 @@ function PopupModal() {
   closeButton.style.right = '15px';
   closeButton.style.cursor = 'pointer';
 
-  // Add styling for dummy text container
+  // Adding styling for dummy text container
   dummyTextContainer.style.marginBottom = '10px';
-  dummyTextContainer.style.color = '#333';  // Styling for the dummy text
+  dummyTextContainer.style.color = '#333'; 
   dummyTextContainer.style.fontSize = '14px';
 
-  // Append elements to modal
+  // Appending elements to modal
   modalContent.appendChild(modalInput);
-  modalContent.appendChild(dummyTextContainer); // Adding the dummy text container
+  modalContent.appendChild(dummyTextContainer); 
   modalContent.appendChild(generateButton);
   modalContent.appendChild(closeButton);
   modal.appendChild(modalContent);
   document.body.appendChild(modal);
 
-  // Close modal when clicking the close button
+  // Closes modal on clicking the close button
   closeButton.addEventListener('click', () => {
     document.body.removeChild(modal);
   });
 
-  // Close modal when clicking outside of the modal content
+  // Closes modal on clicking outside of the modal content
   window.addEventListener('click', function (event) {
     if (!modalContent.contains(event.target)) {
-      document.body.removeChild(modal); // Remove modal if clicking outside of the modal content
+      document.body.removeChild(modal); 
     }
   });
 
-  // Add functionality to generate dummy text when the button is clicked
+  // Adding functionality to generate dummy text when the button is clicked
   generateButton.addEventListener('click', () => {
-    const dummyText = "Thank you for the opportunity! If you have any more questions or if there's anything else I can help you with, feel free to ask."; // You can customize this
+    const dummyText = "Thank you for the opportunity! If you have any more questions or if there's anything else I can help you with, feel free to ask."; 
     generateButton.innerText = 'Regenerate';
     
     // Generating insert button
