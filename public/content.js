@@ -1,9 +1,10 @@
 const addIconToMessageInput = () => {
   const messageInput = document.querySelector('.msg-form__contenteditable');
   if (messageInput) {
-    // Create an SVG element for the icon
 
-    // const imgIcon = document.createElement('img');
+
+    // Creating an SVG element for the icon.
+
     const svgIcon = document.createElement('div')
     svgIcon.className = "svg-icon"
     svgIcon.innerHTML = `<svg width="42" height="42" viewBox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +34,7 @@ const addIconToMessageInput = () => {
   `
     svgIcon.alt = 'Input Icon';
 
-    // Style the img element
+    // Style the img element 
     svgIcon.style.position = 'absolute';
     // svgIcon.style.right = '50px';  // Adjust to position inside input field
     svgIcon.style.top = '50%';
