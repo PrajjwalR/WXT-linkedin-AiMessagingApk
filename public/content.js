@@ -71,7 +71,6 @@ const addIconToMessageInput = () => {
     }
   }
 });
-
 };
 
 // Use MutationObserver to detect when the LinkedIn DOM changes (e.g., message input field is loaded)
