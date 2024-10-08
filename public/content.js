@@ -34,11 +34,12 @@ const addIconToMessageInput = () => {
   `
     svgIcon.alt = 'Input Icon';
 
-    // Style the img element 
+    // Style the img element
     svgIcon.style.position = 'absolute';
     // svgIcon.style.right = '50px';  // Adjust to position inside input field
     svgIcon.style.top = '50%';
-    // svgIcon.style.transform = 'translateY(-50%)';
+    svgIcon.style.transform = 'translateY(-50%)';
+    svgIcon.style.right = "20px"
     svgIcon.style.width = '20px';   // Adjust icon size as needed
     svgIcon.style.height = '20px';  // Adjust icon size as needed
     svgIcon.style.pointerEvents = 'auto'; // Allow clicks on the icon
@@ -72,6 +73,9 @@ const addIconToMessageInput = () => {
   }
 });
 };
+
+
+
 
 // Use MutationObserver to detect when the LinkedIn DOM changes (e.g., message input field is loaded)
 const observer = new MutationObserver((mutationsList, observer) => {
@@ -193,6 +197,5 @@ function PopupModal() {
     dummyTextContainer.innerHTML = dummyText;
   });
 }
-
 
 
