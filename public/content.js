@@ -34,24 +34,26 @@ const addIconToMessageInput = () => {
   `
     svgIcon.alt = 'Input Icon';
 
-    // Style the img element
+   
+    // Styling-- 
+
     svgIcon.style.position = 'absolute';
     // svgIcon.style.right = '50px';  // Adjust to position inside input field
     svgIcon.style.top = '50%';
     svgIcon.style.transform = 'translateY(-50%)';
     svgIcon.style.right = "20px"
-    svgIcon.style.width = '20px';   // Adjust icon size as needed
-    svgIcon.style.height = '20px';  // Adjust icon size as needed
-    svgIcon.style.pointerEvents = 'auto'; // Allow clicks on the icon
-    svgIcon.style.zIndex = '1'; // Ensure it appears above other elements
+    svgIcon.style.width = '20px';   
+    svgIcon.style.height = '20px';  
+    svgIcon.style.pointerEvents = 'auto'; 
+    svgIcon.style.zIndex = '1'; 
 
-    // Ensure the parent container is positioned relatively for absolute positioning to work
+  
     messageInput.style.position = 'relative';
     messageInput.appendChild(svgIcon);
 
     // Add click event listener to the icon for alert
     svgIcon.addEventListener('click', (event) => {
-      event.stopPropagation(); // Prevent click event from bubbling to the input field
+      event.stopPropagation(); 
       // console.log("Prajjwal")
       // alert('Icon clicked!');
       PopupModal()
@@ -63,12 +65,11 @@ const addIconToMessageInput = () => {
   if (!messageInput.contains(event.target)) {
     // alert("BYYY");
     
-    // Find the SVG icon that was added
+    
     const svgIcon = messageInput.querySelector('.svg-icon');
-    // Remove the icon if it exists
     if (svgIcon) {
-      // alert("SBH")
-      messageInput.removeChild(svgIcon); // Remove the icon from the message input
+      // alert("hii")
+      messageInput.removeChild(svgIcon); 
     }
   }
 });
