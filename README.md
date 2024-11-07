@@ -11,3 +11,5 @@ I have made this extension using WXT + JS and it is working fine and also all of
 You can see functionalities in the video and in the code as well.
 I have used the JavaScript as I am not so comfortable with the TypeScript right now and there was not much time for me to learn TypeScript as well as WXT framework, so I made this project using JS, but now I am learning TypeScript and soon I'll be able to master it. 
 Thank you.
+
+Build the project :- wxt build
