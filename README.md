@@ -1,4 +1,4 @@
-# WXT + React
+# WXT + JavaScript
 
 
 https://github.com/user-attachments/assets/a086fe93-dbaf-4e19-bf81-3870e3142c8e
